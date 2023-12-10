@@ -103,7 +103,7 @@ export function UserRegistrationForm() {
                 </Row>
                 <Row>
                     <Col lg={3}>
-                        <Button variant="success" type="submit">Register</Button>
+                        <Button variant="primary" type="submit">Register</Button>
                     </Col>
                     
                 </Row>
