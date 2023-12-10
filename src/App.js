@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Dashboard } from "./components/Dashboard";
+import { UsersList } from "./components/UserList";
+import { UserRegistrationForm } from "./components/UserRegistration";
+import { UserEditForm } from "./components/UserEditForm";
+import { Login } from "./components/Login";
+import { PrivateRoute } from "./components/PrivateRoute";
+import { RedirectIfLoggedIn } from "./components/RedirectIfLoggedIn";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return ( <
+        BrowserRouter >
+        <
+        Routes >
+        <
+        Route path = "/"
+        element = { <
+            RedirectIfLoggedIn > { " " } <
+            Login / > { " " } <
+            /RedirectIfLoggedIn>
+        } >
+        < /Route>{" "} <
+        Route path = "/dashboard"
+        element = { <
+            PrivateRoute > { " " } <
+            Dashboard / > { " " } <
+            /PrivateRoute>
+        } >
+        < /Route>{" "} <
+        Route path = "/users-list"
+        element = { <
+            PrivateRoute > { " " } <
+            UsersList / > { " " } <
+            /PrivateRoute>
+        } >
+        < /Route>{" "} <
+        Route path = "/user-registration"
+        element = { <
+            PrivateRoute > { " " } <
+            UserRegistrationForm / > { " " } <
+            /PrivateRoute>
+        } >
+        < /Route>{" "} <
+        Route path = "/edit/:email"
+        element = { <
+            PrivateRoute > { " " } <
+            UserEditForm / > { " " } <
+            /PrivateRoute>
+        } >
+        < /Route>{" "} <
+        /Routes>{" "} <
+        /BrowserRouter>
+    );
 }
 
 export default App;
